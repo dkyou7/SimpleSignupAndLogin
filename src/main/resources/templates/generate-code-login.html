@@ -79,7 +79,7 @@ span.psw {
 </style>
 <body>
     <div class="container" style="margin-top:200px;">
-        <form th:action="@{/code-print}" th:object="${loginForm}" method="post" style="padding:20px; width:30vw; margin-left:33vw;">
+        <form th:action="@{/generateCode}" th:object="${loginForm}" method="post" style="padding:20px; width:30vw; margin-left:33vw;">
             <input type="hidden" th:field="*{redirect_url}" th:text="*{redirect_url}"/>
             <div>
                 <label th:for="username"><b>Username</b></label>

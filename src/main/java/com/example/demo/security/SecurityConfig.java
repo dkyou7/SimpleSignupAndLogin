@@ -17,12 +17,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/","/sign-up").permitAll()
+                .antMatchers("/","/log-in","/go_login","/generateCode","/loginSuccess","/sign-up").permitAll()
                 .anyRequest().authenticated();
 
         http.formLogin()
                 .loginPage("/log-in")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/loginSuccess")
                 .permitAll();
 
         http.logout()

@@ -33,4 +33,10 @@ public class AccountService implements UserDetailsService {
 
         return new UserAccount(account);
     }
+
+
+    public void mergeInfo(Account byUsername, LoginForm loginForm) {
+        byUsername.generateCode();
+        byUsername.setRedirect_url(loginForm.getRedirect_url());
+    }
 }

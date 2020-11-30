@@ -3,6 +3,7 @@ package com.example.demo.account;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -19,5 +20,15 @@ public class Account {
     private String username;
     private String password;
     private String password_repeat;
+    private String code;
     private boolean remember;
+    private String redirect_url;
+
+    public void generateCode() {
+        this.code = UUID.randomUUID().toString();
+    }
+
+    public void setRedirect_url(String redirect_url) {
+        this.redirect_url = redirect_url;
+    }
 }
