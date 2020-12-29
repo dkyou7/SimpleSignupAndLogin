@@ -25,7 +25,7 @@
 <body class="bg-light">
 
 <div class="container">
-    <p class="alert alert-info" th:if="${message}" th:text="${message}"></p>
+    <p class="box alert alert-info mb-5" th:if="${message}" th:text="${message}"></p>
     <div class="box" th:if="${account != null}">
         <h2 class="text-muted mb-4" th:text="${account?.nickname}+'님, 안녕하세요!'"></h2>
         <form th:action="@{/log-out}" method="post">
@@ -33,7 +33,7 @@
         </form>
     </div>
     <div class="box" th:if="${account == null}">
-        <h2 class="text-muted ">간단하게 구현해본 회원가입, 로그인</h2>
+        <h2 class="text-muted mt-5">간단하게 구현해본 회원가입, 로그인</h2>
         <p><small class="text-muted mb-4">Covered by, dkyou</small></p>
         <a th:href="@{/sign-up}" class="btn btn-lg btn-outline-primary">sign up</a>
         <a th:href="@{/log-in}" class="btn btn-lg btn-outline-primary">log in</a>
