@@ -19,7 +19,8 @@ public class AccountService implements UserDetailsService {
     public void signUp(SignUpForm signUpForm) {
         Account account = Account.builder().username(signUpForm.getUsername())
                 .password(passwordEncoder.encode(signUpForm.getPassword()))
-                .password_repeat(signUpForm.getPassword_repeat())
+                .nickname(signUpForm.getNickname())
+                .remember(signUpForm.isRemember())
                 .build();
         accountRepository.save(account);
     }

@@ -6,6 +6,6 @@ import lombok.Data;
 public class SignUpForm {
     private String username;
     private String password;
-    private String password_repeat;
+    private String nickname;
     private boolean remember;
 }

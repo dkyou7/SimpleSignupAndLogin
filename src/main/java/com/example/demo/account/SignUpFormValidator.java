@@ -21,7 +21,7 @@ public class SignUpFormValidator implements Validator {
     public void validate(Object o, Errors errors) {
         SignUpForm signUpForm = (SignUpForm)o;
         if(accountRepository.existsByUsername(signUpForm.getUsername())){
-            errors.rejectValue("username","invalid username",new Object[]{signUpForm.getUsername()},"이미 사용중인 아이디입니다.");
+            errors.rejectValue("username","invalid username","이미 사용중인 아이디입니다.");
         }
     }
 }

@@ -11,8 +11,10 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -35,10 +37,11 @@ public class AccountController {
     }
 
     @PostMapping("/sign-up")
-    public String signUpSubmit(@Valid SignUpForm signUpForm, Errors errors){
+    public String signUpSubmit(@Valid SignUpForm signUpForm, Errors errors, RedirectAttributes attributes){
         if(errors.hasErrors()){
             return "sign-up";
         }
+        attributes.addFlashAttribute("message","회원가입 성공!");
         accountService.signUp(signUpForm);
         return "redirect:/";
     }
@@ -47,19 +50,6 @@ public class AccountController {
     public String logInDisp(Model model){
         model.addAttribute(new LoginForm());
         return "log-in";
-    }
-
-    @GetMapping("/loginSuccess")
-    public String loginSuccess(String username,Model model){
-        Account account = accountRepository.findByUsername(username);
-
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
-                new UserAccount(account),   // 현재 인증된 사용자 정보 참조
-                account.getPassword(),
-                List.of(new SimpleGrantedAuthority("ROLE_USER")));
-        SecurityContextHolder.getContext().setAuthentication(token);
-        model.addAttribute("username",account.getUsername());
-        return "redirect:/";
     }
 
     @GetMapping("/")

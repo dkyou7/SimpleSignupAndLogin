@@ -19,16 +19,7 @@ public class Account {
 
     private String username;
     private String password;
-    private String password_repeat;
-    private String code;
+    private String nickname;
     private boolean remember;
-    private String redirect_url;
 
-    public void generateCode() {
-        this.code = UUID.randomUUID().toString();
-    }
-
-    public void setRedirect_url(String redirect_url) {
-        this.redirect_url = redirect_url;
-    }
 }
